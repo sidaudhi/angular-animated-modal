@@ -1,0 +1,74 @@
+@import 'nib'
+
+sqrt(x)
+  return math(x, 'sqrt')
+
+primary-color = #1ab394
+background-color = #f3f3f4
+bigger-circle-radius = 120
+smaller-circle-radius = 82
+
+#modal-container.dark
+  background rgba(0,0,0,0.60)
+
+  .anim-modal-close
+    color #FFF
+
+  .anim-modal-wrapper
+    box-shadow 0px 0px 5px 0px rgba(0,0,0,0.15)
+
+#modal-container
+  position absolute
+  top 0px
+  left 0px
+  bottom 0px
+  right 0px
+  background rgba(216,216,216,0.60)
+  transform scale(0.1,0.1)
+  opacity 0
+  transition all 500ms ease-in-out
+  &.visible
+    opacity 1
+    transform scale(1,1)
+
+  .anim-modal-close
+    position absolute
+    top 7px
+    right 10px
+    font-size 18px
+    color #000
+    &:hover
+      cursor pointer
+      text-decoration none
+
+  .anim-modal-wrapper
+    position absolute
+    top 10px
+    left 10px
+    right 10px
+    background-color #FFF
+    padding 15px
+    min-width 300px
+    box-shadow 0px 0px 5px 0px rgba(0,0,0,0.30)
+    border-radius 3px
+    transition all 500ms ease-in-out
+
+@media screen and (min-width: 640px)
+  #modal-container
+
+    .anim-modal-wrapper
+      left 50%
+      top 50%
+      transform translate(-50%,-50%)
+      &.larger-than-window
+        top 40px
+        transform translate(-50%,0%)
+
+@media screen and (max-width: 640px)
+  #modal-container
+
+    .anim-modal-close
+      color #000
+      top 20px
+      right 20px
+      z-index 999
