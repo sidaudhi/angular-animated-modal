@@ -1,0 +1,121 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://rawgit.com/sidaudhi/angular-animated-modal/master/dist/stylesheets/angular.animated.modal.css"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <meta name="og:title" content="AngularJS Circular Time Picker"/>
+    <meta name="og:description" content="Native AngularJS datetime picker element directive with a circular interface for time"/>
+    <meta name="og:type" content="Website"/>
+    <meta name="og:image" content="logo.png"/>
+  </head>
+  <body ng-app="myapp" ng-controller="AppCtrl">
+    <header class="jumbotron text-center">
+      <div class="container">
+        <h1>AngularJS Animated Modal</h1>
+        <p>Native AngularJS service for dynamic and animated modals (animated from point of click on screen)</p>
+        <p>Version 0.0.1</p>
+        <p class="btn-group">
+          <a href="https://github.com/sidaudhi/angular-circular-timepicker" class="btn-default btn">Code on GitHub</a>
+          <a href="https://github.com/sidaudhi/angular-circular-timepicker/archive/master.zip" class="btn-primary btn">Download</a>
+        </p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="jumbotron" style="cursor:pointer"  ng-click="showModal($event,'sample-modal',{title:'Heading'})"><h2 class="text-center">Click Anywhere on Me!</h2></div>
+    </div>
+    <div class="container">
+      <h3>How</h3>
+      <p>You can define your own template for the modal and have this service inject it into the page</p>
+      <div class="well">
+        <h4>Template</h4>
+        <p>Define a template with any framework, just ensure that it is identified by an ID</p>
+        <pre>
+&lt;script type=&quot;text/ng-template&quot; id=&quot;sample-modal&quot;&gt;
+  &lt;h1 class=&quot;text-center&quot;&gt;{{data.title}}&lt;/h1&gt;
+  &lt;hr&gt;
+  &lt;div class=&quot;row text-center&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;h2&gt;Sub-Heading&lt;/h2&gt;
+      &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;h2&gt;Sub-Heading&lt;/h2&gt;
+      &lt;p&gt;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;hr&gt;
+  &lt;div class=&quot;text-right&quot;&gt;
+    &lt;a class=&quot;btn btn-danger btn-lg&quot; ng-click=&quot;close()&quot;&gt;Close&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/script&gt;
+        </pre>
+        <br/>
+        <h4>Usage</h4>
+        <p>Initialize the app with the angular.animated.modal module and inject into controller with $animatedModal parameter. </p>
+        <p>Choose between 'Dark' and 'Light' themes, provide the templateUrl, the coordinates from where the modal should start from, and the data for the modal template.</p>
+        <pre>
+var app = angular.module('myApp',['angular.animated.modal']);
+app.controller('AppCtrl',function($animatedModal,$scope){
+  $scope.showModal = function($event,template,data){
+    var modalOptions = {
+      templateUrl: template,
+      coords:[$event.x,$event.y], //Pass coordinates of the trigger
+      theme:'dark',
+      data: data
+    }
+    $animatedModal.open(modalOptions);
+  }
+});
+        </pre>
+        <br/>
+        <h4>Trigger</h4>
+        <pre>
+&lt;div class=&quot;jumbotron&quot; style=&quot;cursor:pointer&quot;  ng-click=&quot;showModal($event,&#39;sample-modal&#39;,{title:&#39;Heading&#39;})&quot;&gt;&lt;h2 class=&quot;text-center&quot;&gt;Click Anywhere on Me!&lt;/h2&gt;&lt;/div&gt;
+        </pre>
+      </div>
+    </div>
+    <script type="text/ng-template" id="sample-modal">
+      <h1 class="text-center">{{data.title}}</h1>
+      <hr>
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h2>Sub-Heading</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div class="col-md-12">
+          <h2>Sub-Heading</h2>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="col-md-12">
+          <h2>Sub-Heading</h2>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+        <div class="col-md-12">
+          <h2>Sub-Heading</h2>
+          <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+      </div>
+      <hr>
+      <div class="text-right">
+        <a class="btn btn-danger btn-lg" ng-click="close()">Close</a>
+      </div>
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://rawgit.com/sidaudhi/angular-animated-modal/master/dist/javascript/angular.animated.modal.min.js"></script>
+    <script type="text/javascript">
+      var a = angular.module('myapp',['angular.animated.modal']);
+      a.controller('AppCtrl',function($animatedModal,$scope){
+        $scope.showModal = function($event,template,data){
+          var modalOptions = {
+            templateUrl: template,
+            coords:[$event.x,$event.y],
+            theme:'light',
+            data: data
+          }
+          $animatedModal.open(modalOptions);
+        }
+      });
+    </script>
+  </body>
+</html>
