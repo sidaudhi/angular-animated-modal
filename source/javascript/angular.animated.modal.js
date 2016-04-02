@@ -42,8 +42,9 @@
            heightRequired = documentHeight + 'px';
          }
          angular.element(document.getElementById('modal-container')).css({'height':heightRequired});
-         var bodyStyles = {'height':heightRequired,'overflow':'auto'};
-         angular.element(document).find('html').css(bodyStyles);
+         var bodyStyles = {'height':heightRequired,'overflow':'hidden'};
+         var htmlStyles = {'height':heightRequired,'overflow':'auto'};
+         angular.element(document).find('html').css(htmlStyles);
          angular.element(document).find('body').css(bodyStyles);
          if(modalHeight > documentHeight){
            angular.element(document.getElementById('modal-container-wrapper')).addClass('larger-than-window');

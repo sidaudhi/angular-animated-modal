@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var uglifyCss = require('gulp-uglifycss');
 var concatCss = require('gulp-concat-css');
 var nib = require('nib');
 
@@ -18,6 +19,7 @@ gulp.task('styles',['copy-sprites','copy-fonts'], function() {
     ])
     .pipe(stylus({use:nib()}))
     .pipe(concatCss('angular.animated.modal.css'))
+    .pipe(uglifyCss())
     .pipe(gulp.dest('./dist/stylesheets'));
 });
 
